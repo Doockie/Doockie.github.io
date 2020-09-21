@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <a href="30_Taniltsuulga.html">
+        <button>Butsah</button>
+    </a>
+    <button onclick="login()">Login</button>
+    <button onclick="logout()">Log out</button>
+    <script>
+        var isLoggedIn = false
+        function login(){
+            if(isLoggedIn){
+                alert("Nevtersen baina!")
+            }else{
+                alert("Amjilttai nevterlee!")
+                isLoggedIn = true
+            } 
+        }
+        function logout(){
+            if(!isLoggedIn){
+                alert("Garsan baina!")
+            }
+            else{
+                alert("Gargalaa!")
+                isLoggedIn = false
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
