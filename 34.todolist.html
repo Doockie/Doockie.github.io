@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+</head>
+<body>
+      <div id="myDIV" class="header">
+        <a href="index.html">
+          <button class="butsah">Butsah</button>
+        </a>
+            <h1>Ирц бүртгэх лист</h1>
+            <input type="text" id="myInput" placeholder="Лист оруулна уу...">
+            <span onclick="newElement()" class="addBtn">Нэмэх</span>
+          </div>
+          <ul id="myUL">
+            <li>Гүнбилэг</li>
+            <li>Эрдэнэбаяр</li>
+            <li>Нармандах</li>
+            <li>Лхагва-Эрдэнэ</li>
+            <li>Жамъянсан</li>
+            <li>Эрмүүн</li>
+            <li>Дөлгөөн</li>
+            <li>Батбаяр</li>
+            <li>Энхдаваа</li>
+          </ul>
+          <style>
+body{
+  margin: 0px;
+  background: darkcyan;
+}
+* {
+  box-sizing: border-box;
+}
+h1{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 60px;
+}
+ul {
+  margin: 0px 180px;
+  padding: 0;
+}
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: white;
+  font-size: 18px;
+  transition: 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+ul li:nth-child(odd) {
+  background: white;
+}
+ul li:hover {
+  background: darkmagenta;
+}
+ul li.checked {
+  background: purple;
+  color: #fff;
+  text-decoration: line-through;
+}
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+.header {
+  background-color: darkblue;
+  padding: 30px 40px;
+  color: tomato;
+  text-align: center;
+  margin: 0 160px;
+  margin-top: 50px;
+}
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: grey;
+  color: black;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+.butsah{
+  height: 60px;
+  width: 10 0px;
+}
+          </style>
+      <script>
+
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("Ямар нэгэн зүйл бичнэ үү!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+      </script>
+</body>
+</html>
